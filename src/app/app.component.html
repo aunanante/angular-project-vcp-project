@@ -1,0 +1,54 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary" class="header">
+  <!-- <div>Villes Commerces Produits</div> -->
+  <button mat-button routerLink="/" >{{title}}</button>
+  <button mat-button routerLink="/">
+    <mat-icon (click)="logout()">home</mat-icon>
+  </button>
+  <span class="nav-tool-items">
+    <mat-icon (click)="sidenav.toggle()" class="hamburger">menu</mat-icon>
+  </span>
+</mat-toolbar>
+<mat-sidenav-container *ngIf="isLoggedIn" class="example-container">
+  
+    <!-- Sidenav -->
+  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" >
+    <mat-nav-list>
+      <a mat-list-item routerLinkActive="active" routerLink="/add-ville">
+        <mat-icon>add</mat-icon> Add ville
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/villes-list">
+        <mat-icon>format_list_bulleted </mat-icon> View villes
+      </a>
+
+      <a mat-list-item routerLinkActive="active" routerLink="/add-commerce">
+        <mat-icon>add</mat-icon> Add commerce
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/commerces-list">
+        <mat-icon>format_list_bulleted </mat-icon> View commerces
+      </a>
+
+      <a mat-list-item routerLinkActive="active" routerLink="/add-category">
+        <mat-icon>add</mat-icon> Add category
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/categories-list">
+        <mat-icon>format_list_bulleted </mat-icon> View categories
+      </a>
+
+      <a mat-list-item routerLinkActive="active" routerLink="/add-product">
+        <mat-icon>add</mat-icon> Add product
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/products-list">
+        <mat-icon>format_list_bulleted </mat-icon> View products
+      </a>
+      <a mat-list-item routerLinkActive="active" routerLink="/expiration-date">
+        <mat-icon>calendar_today </mat-icon> Set Expiration Date
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<router-outlet *ngIf="!isLoggedIn"></router-outlet>

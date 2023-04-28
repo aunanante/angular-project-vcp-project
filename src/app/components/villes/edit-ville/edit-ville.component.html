@@ -1,0 +1,23 @@
+<!-- Form -->
+<div class="inner-wrapper">
+    <form [formGroup]="villeForm" (ngSubmit)="onSubmitVilleForm()"  novalidate>
+        <mat-card>
+            <!-- Name -->
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Ville name" formControlName="villeName">
+                <mat-error *ngIf="villeForm.get('villeName')?.errors?.['required']"> 
+                    You must provide a<strong> ville name</strong>
+                </mat-error>
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card>
+            <!-- Submit & Reset -->
+            <div class="full-wrapper button-wrapper">
+                <div class="button-wrapper">
+                    <button mat-flat-button color="warn">Update</button>
+                </div>
+            </div>
+        </mat-card>
+    </form>
+</div>

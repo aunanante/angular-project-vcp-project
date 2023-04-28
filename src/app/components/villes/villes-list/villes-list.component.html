@@ -1,0 +1,33 @@
+<div class="title-group">
+    <h1 class="mat-h1">Villes List</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+<table mat-table matSort [dataSource]="dataSourceVille" #TableVilleSort="matSort" class="mat-elevation-z8"
+    style="width: 100%; margin: 0 auto;">
+
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>id</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+
+    <!-- villeName Column -->
+    <ng-container matColumnDef="villeName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>villeName</th>
+        <td mat-cell *matCellDef="let element">{{ element.villeName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element; let i = index;">
+            <button mat-raised-button color="primary" class="push-right"
+                [routerLink]="['/edit-ville/', element.id]">Edit</button>
+            <button mat-raised-button color="accent" (click)="deleteVille(i, element)">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsVille"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsVille" (click)="onRowClicked(row)"></tr>
+</table>
+
+<mat-paginator #TableVillePaginator="matPaginator" [pageSize]="3" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

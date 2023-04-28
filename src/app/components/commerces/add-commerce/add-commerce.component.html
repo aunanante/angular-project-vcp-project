@@ -1,0 +1,230 @@
+<!-- Title group  -->
+<div class="title-group">
+    <h1 class="mat-h1">Add Commerce</h1>
+    <mat-divider fxFlex="1 0"></mat-divider>
+</div>
+<mat-card>
+    <div class="controlers-wrapper">
+        <mat-form-field appearance="fill">
+            <mat-label>Villes </mat-label>
+            <mat-select placeholder="ville" (selectionChange)="applyFilterOne1($event.value)">
+                <mat-option *ngFor="let ville of villes" [value]="(ville.id).toString()">
+                    {{ville.villeName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-card>
+<!-- Form -->
+<div class="inner-wrapper">
+    <form [formGroup]="commerceForm" (ngSubmit)="submitCommerceForm()" #resetStudentForm="ngForm" novalidate>
+
+        <mat-grid-list cols="2" rowHeight="8:1">
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- commerceName -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="commerce Name" formControlName="commerceName">
+                        <mat-error *ngIf="commerceForm.get('commerceName')?.errors?.['required']">
+                            You must provide a<strong> commerce Name</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- proprietaireName -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="proprietaire Name" formControlName="proprietaireName">
+                        <mat-error *ngIf="commerceForm.get('proprietaireName')?.errors?.['required']">
+                            You must provide a<strong>proprietaire Name</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- adresse -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="adresse" formControlName="adresse">
+                        <mat-error *ngIf="commerceForm.get('adresse')?.errors?.['required']">
+                            You must provide a<strong>adresse</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- telephone -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="telephone" formControlName="telephone">
+                        <mat-error *ngIf="commerceForm.get('telephone')?.errors?.['required']">
+                            You must provide a<strong>telephone</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- email -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="email" formControlName="email">
+                        <mat-error *ngIf="commerceForm.get('email')?.errors?.['required']">
+                            You must provide a<strong>email</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- ville_id -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="ville_id" formControlName="ville_id">
+                        <mat-error *ngIf="commerceForm.get('ville_id')?.errors?.['required']">
+                            You must provide a<strong>ville_id</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+            <!-- ****************************************************** -->
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- transfert -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="transfert" formControlName="transfert">
+                        <mat-error *ngIf="commerceForm.get('transfert')?.errors?.['required']">
+                            You must provide a<strong> transfert</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- date transfert -->
+                    <!-- <mat-form-field class="example-full-width">
+                        <input matInput placeholder="date transfert" formControlName="date_transfert">
+                        <mat-error *ngIf="commerceForm.get('date_transfert')?.errors?.['required']">
+                            You must provide a<strong>date transfert</strong>
+                        </mat-error>
+                    </mat-form-field> -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>date transfert</mat-label>
+                        <input matInput formControlName="date_transfert" [matDatepicker]="date_transfertPicker"
+                            (click)="date_transfertPicker.open()" placeholder="Date transfert">
+                        <mat-datepicker-toggle matSuffix [for]="date_transfertPicker">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #date_transfertPicker>
+                        </mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <!-- ********************************************************************** -->
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- type transfert -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="type transfert" formControlName="type_transfert">
+                        <mat-error *ngIf="commerceForm.get('type_transfert')?.errors?.['required']">
+                            You must provide a<strong>type transfert</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- payed -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="payed" formControlName="payed">
+                        <mat-error *ngIf="commerceForm.get('payed')?.errors?.['required']">
+                            You must provide a<strong>payed</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- date_peremption -->
+                    <!-- <mat-form-field class="example-full-width">
+                        <input matInput placeholder="date peremption" formControlName="date_peremption">
+                        <mat-error *ngIf="commerceForm.get('date_peremption')?.errors?.['required']">
+                            You must provide a<strong>date peremption</strong>
+                        </mat-error>
+                    </mat-form-field> -->
+                    <mat-form-field class="example-full-width">
+                        <mat-label>date peremption</mat-label>
+                        <input matInput formControlName="date_peremption" [matDatepicker]="date_peremptionPicker"
+                            (click)="date_peremptionPicker.open()">
+                        <mat-datepicker-toggle matSuffix [for]="date_peremptionPicker">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #date_peremptionPicker>
+                        </mat-datepicker>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- presentation -->
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="presentation" formControlName="presentation">
+                        <mat-error *ngIf="commerceForm.get('presentation')?.errors?.['required']">
+                            You must provide a<strong>presentation</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <div class="text-inside-grid">
+                    <!-- Submit & Reset -->
+                    <mat-card>
+                        <div class="full-wrapper button-wrapper">
+                            <div class="button-wrapper">
+                                <button mat-flat-button color="warn">Submit</button>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+            </mat-grid-tile>
+            <mat-grid-tile>
+
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <!-- Left block -->
+        <mat-card>
+
+
+        </mat-card>
+        <mat-card>
+
+        </mat-card>
+        <mat-card>
+
+        </mat-card>
+
+        <mat-card>
+
+        </mat-card>
+        <mat-card>
+
+        </mat-card>
+
+        <mat-card>
+
+        </mat-card>
+        <mat-divider fxFlex="1 0"></mat-divider>
+
+    </form>
+</div>

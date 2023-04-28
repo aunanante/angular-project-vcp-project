@@ -1,0 +1,18 @@
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onLoginSubmit()" novalidate>
+    <div class="form-container">  
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password" formControlName="password">
+      </mat-form-field>
+        
+        <button mat-button type="submit" 
+                class="mat-raised-button mat-primary" 
+                [disabled]="!loginForm.valid">Login</button>
+        <button mat-button routerLink="/register" class="divider">Register</button>
+    </div>
+  </form>
+</div>

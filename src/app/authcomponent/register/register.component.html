@@ -1,0 +1,41 @@
+<div class="medium-list">
+    <div class="list-viewer-wrapper">
+      <div class="list-header-title">Register</div>
+  
+      <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onRegisterSubmit()" novalidate>
+        <div class="form-container">
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="firstName">
+            <mat-error *ngIf="registerForm.controls['firstName'].hasError('required')">First name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName">
+            <mat-error *ngIf="registerForm.controls['lastName'].hasError('required')">Last name is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="registerForm.controls['email'].hasError('required')">Email is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password">
+            <mat-error *ngIf="registerForm.controls['password'].hasError('required')">Password is required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Contact</mat-label>
+            <input matInput formControlName="contact">
+            <mat-error *ngIf="registerForm.controls['contact'].hasError('required')">Contact is required</mat-error>
+          </mat-form-field>
+         
+  
+            <button mat-button type="submit" 
+                    class="mat-raised-button mat-primary" 
+                    [disabled]="!registerForm.valid">Register</button>
+            <button mat-button routerLink="/login" class="divider">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
